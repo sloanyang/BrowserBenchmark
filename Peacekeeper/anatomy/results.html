@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<!-- Futuremark Peacekeeper -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Peacekeeper</title>
+
+<!-- Fallback refresh after 120 seconds. -->
+<link rel="stylesheet" href="css/test-style.css" type="text/css" media="screen" />
+
+<script src="js/libs/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+
+
+<script type="text/javascript">
+$(function(){
+	$("#results").text("result: " + $.urlParam("score") + $.urlParam("unit"));
+});
+</script>
+
+
+
+</head>
+
+<div id="results" style="font-size:30px;color:red;font-weight:bold;left: 20px;top: 20px;position: relative;"></div>
+
+</body>
+</html>

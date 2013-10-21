@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=480"/>
+	<title>GUIMark3 HTML5 Vector</title>
+	<link rel="stylesheet" href="../guimark3.css" type="text/css"/>
+    <script type="text/javascript" src="../guimark3.js"></script>
+    
+<script type="text/javascript">
+
+var STAGE = { width:480, height:640 };
+var FRAMERATE = 60;
+var context = null;
+var header = null;
+
+var white = null;
+var vizTime = 0;
+var dropIndex = 0;
+var drops = [];
+
+
+function init(){
+	var canvas = document.getElementById('world');
+	if (canvas && canvas.getContext) {
+		//setup page
+		context = canvas.getContext('2d');
+		header = new PerformanceBar( "GM3 HTML5 Vector", document.getElementById('headerbar') );
+		setInterval( loop, 1000 / FRAMERATE );
+		
+		//initialize test variables
+		vizTime = TimeUtil.getTimer();
+		white = new CSSColor(255, 255, 255);
+	}
+}
+
+
+function loop(){
+	vizTime = TimeUtil.getTimer();
+	var drop;
+	var dropCount = Math.floor(vizTime / 200);
+	while(dropIndex < dropCount){
+		dropIndex++;
+		drop = new Drop();
+		drop.time = dropIndex*200;
+		drop.x = 100+(Math.random()*280);
+		drop.y = 140+(Math.random()*400);
+		drop.color = new CSSColor( Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255) );
+		drop.radius = 0;
+		drops.push(drop);
+	}
+	context.fillStyle = "rgb(0,0,0)";
+	context.fillRect(0, 0, STAGE.width, STAGE.height);
+	for(var i=drops.length-1; i>-1; i--){
+		drop = drops[i];
+		if(vizTime-drop.time > 1200){
+			drops.splice(i, 1);
+		}else{
+			drop.radius = easeOut(vizTime-drop.time, 0, 120, 1200);
+			renderDrop(drop);
+		}
+	}
+	header.updatePerformance();
+}
+
+function easeOut(t, b, c, d) {
+	return c*((t=t/d-1)*t*t + 1) + b;
+};
+function easeIn(t, b, c, d) {
+	return c*(t/=d)*t*t + b;
+};
+function alphaRadius(value, radius, max){
+	return easeIn(radius, value, -value, max);
+}
+function renderDrop(drop) {
+	var grad;
+	var outerRadius = drop.radius;
+	
+	if(outerRadius < 100){
+		context.strokeStyle = drop.color.alphaStyle( alphaRadius(0.7, outerRadius, 100) );
+		context.lineWidth = 2;
+		context.fillStyle = drop.color.alphaStyle( alphaRadius(0.2, outerRadius, 100) );
+		context.beginPath();
+		context.arc(drop.x, drop.y, outerRadius, 0, Math.PI*2, false);
+		context.closePath();
+		context.fill();
+		context.stroke();
+		
+		//draw gradient 1
+		grad = context.createRadialGradient(drop.x, drop.y, 0, drop.x, drop.y, outerRadius);
+		grad.addColorStop(0.58, drop.color.alphaStyle(0));
+		grad.addColorStop(0.82, drop.color.alphaStyle( alphaRadius(0.5, outerRadius, 100) ));
+		grad.addColorStop(0.95, drop.color.alphaStyle(0));
+		context.fillStyle = grad;
+		context.fillRect(drop.x-outerRadius, drop.y-outerRadius, outerRadius*2, outerRadius*2);
+		
+		//draw gradient 2
+		var midcolor = drop.color.lighten(0.5);
+		grad = context.createRadialGradient(drop.x, drop.y, 0, drop.x, drop.y, outerRadius);
+		grad.addColorStop(0, drop.color.alphaStyle( alphaRadius(0.1, outerRadius, 100) ));
+		grad.addColorStop(0.36, midcolor.alphaStyle( alphaRadius(0.1, outerRadius, 100) ));
+		grad.addColorStop(0.65, white.alphaStyle( alphaRadius(0.5, outerRadius, 100) ));
+		grad.addColorStop(0.76, white.alphaStyle(0));
+		context.fillStyle = grad;
+		context.fillRect(drop.x-outerRadius, drop.y-outerRadius, outerRadius*2, outerRadius*2);
+	}
+	
+	var innerRadius = drop.radius*0.4;
+	context.strokeStyle = white.alphaStyle( alphaRadius(0.7, outerRadius, 100) );
+	context.lineWidth = 2;
+	context.beginPath();
+	context.arc(drop.x, drop.y, innerRadius, 0, Math.PI*2, false);
+	context.closePath();
+	context.stroke();
+	
+	//draw inner gradient 1
+	grad = context.createRadialGradient(drop.x, drop.y, 0, drop.x, drop.y, innerRadius);
+	grad.addColorStop(0.33, drop.color.alphaStyle(0));
+	grad.addColorStop(0.77, drop.color.alphaStyle( alphaRadius(0.5, innerRadius, 50) ));
+	grad.addColorStop(0.90, drop.color.alphaStyle(0));
+	context.fillStyle = grad;
+	context.fillRect(drop.x-innerRadius, drop.y-innerRadius, innerRadius*2, innerRadius*2);
+	
+	//draw inner gradient 2
+	grad = context.createRadialGradient(drop.x, drop.y, 0, drop.x, drop.y, innerRadius);
+	grad.addColorStop(0.00, white.alphaStyle( alphaRadius(0.6, innerRadius, 50) ));
+	grad.addColorStop(0.30, white.alphaStyle( alphaRadius(0.7, innerRadius, 50) ));
+	grad.addColorStop(0.66, white.alphaStyle(0));
+	context.fillStyle = grad;
+	context.fillRect(drop.x-innerRadius, drop.y-innerRadius, innerRadius*2, innerRadius*2);
+	
+	//draw inner gradient 3
+	grad = context.createRadialGradient(drop.x, drop.y, 0, drop.x, drop.y, innerRadius);
+	grad.addColorStop(0.10, drop.color.alphaStyle( alphaRadius(0.7, innerRadius, 50) ));
+	grad.addColorStop(0.25, drop.color.alphaStyle(0));
+	context.fillStyle = grad;
+	context.fillRect(drop.x-innerRadius, drop.y-innerRadius, innerRadius*2, innerRadius*2);
+}
+
+function Drop(){
+	this.x = 0;
+	this.y = 0;
+	this.radius = 0;
+	this.color = null;
+	this.time = 0;
+}
+
+function CSSColor(r, g, b){
+	this.r = r;
+	this.g = g;
+	this.b = b;
+	this.style = function(){
+		return "rgb("+this.r+","+this.g+","+this.b+")";
+	}
+	this.alphaStyle = function(alpha){
+		return "rgba("+this.r+","+this.g+","+this.b+","+alpha+")";
+	}
+	this.lighten = function(mult){
+		var rdiff = (255-this.r)*mult;
+		var gdiff = (255-this.g)*mult;
+		var bdiff = (255-this.b)*mult;
+		return new CSSColor(Math.floor(this.r+rdiff), Math.floor(this.g+gdiff), Math.floor(this.b+bdiff));
+	}
+}
+
+</script>
+</head>
+<body onLoad="init()">
+	<div id="headerbar"></div>
+	<canvas id="world" width="480" height="640">
+        <p>You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p>
+    </canvas>
+</body>
+</html>

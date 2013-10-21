@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="home" namespace="/" extends="struts-default">
+	
+		<interceptors>
+
+			<interceptor name="Perf4jInterceptor" class="com.futuremark.peacekeeper.web.interceptor.Perf4jInterceptor" />
+			<interceptor name="HibernateSessionInterceptor" class="hibernateInterceptor" />
+			
+			<interceptor-stack name="pkStack">
+				<interceptor-ref name="HibernateSessionInterceptor" />
+				<interceptor-ref name="defaultStack">
+					<param name="params.excludeParams">_,repeat,debug</param>
+					<param name="acceptParamNames">\w+((\.\w+)|(\[\d+\])|(\['\w+'\]))*</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+		
+		<default-interceptor-ref name="pkStack" />
+		
+		<global-results>
+       <result name="unknownError">/WEB-INF/jsp/error.jsp</result>
+    </global-results>
+        
+    <global-exception-mappings>
+      <exception-mapping result="unknownError" exception="java.lang.Exception" />
+    </global-exception-mappings>
+
+		<action name="error" class="com.futuremark.peacekeeper.web.ErrorAction">
+			<result name="success">/WEB-INF/jsp/index-login.jsp</result>
+		</action>
+
+		<action name="index" class="indexAction">
+			<result name="success">/WEB-INF/jsp/index-success.jsp</result>
+			<result name="login">/WEB-INF/jsp/index-login.jsp</result>
+		</action>
+		
+		<action name="scan" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/WEB-INF/jsp/scan-success.jsp</result>
+		</action>
+		
+		<action name="run" class="startBenchmarkAction">
+			<result name="success">/WEB-INF/jsp/run-success.jsp</result>
+			<result name="stopped" type="redirect-action">
+            	<param name="actionName">index</param>
+            </result>
+		</action>
+		
+		<action name="runTest" class="runTestAction">
+			<result name="success">/WEB-INF/jsp/runTest-success.jsp</result>
+			<result name="finished">/WEB-INF/jsp/finished-success.jsp</result>
+			<result name="invalidresult">/WEB-INF/jsp/finished-invalidresult.jsp</result>
+		</action>
+		
+		<action name="runSingle" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/WEB-INF/jsp/runSingle-success.jsp</result>
+		</action>
+		
+		<action name="runSingleTest" class="runSingleTestAction">
+			<result name="success">/WEB-INF/jsp/runTest-success.jsp</result>
+			<result name="finished">/WEB-INF/jsp/runSingleTest-finished.jsp</result>
+			<result name="error">/WEB-INF/jsp/runSingleTest-error.jsp</result>
+		</action>
+		
+		<action name="runSingleForm" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/WEB-INF/jsp/runSingleForm-success.jsp</result>
+		</action>
+		
+		<action name="showResults" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/WEB-INF/jsp/showresults-success.jsp</result>
+		</action>
+		
+		<action name="faq" class="com.opensymphony.xwork2.ActionSupport">
+			<result name="success">/WEB-INF/jsp/faq.jsp</result>
+		</action>
+		
+		<action name="addResult" class="addTestResultAction">
+			<result name="success">/WEB-INF/jsp/addresult-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/addresult-error.jsp</result>
+		</action>
+		
+		<action name="showAndSaveResult" class="showAndSaveResultAction">
+			<result name="success">/WEB-INF/jsp/showresult-success.jsp</result>
+		</action>
+	
+		<action name="results" class="resultsAction">
+			<result name="success">/WEB-INF/jsp/results-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/results-error.jsp</result>
+		</action>
+	
+		<action name="batteryResults" class="batteryResultsAction">
+			<result name="success">/WEB-INF/jsp/battery-results-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/battery-results-error.jsp</result>
+		</action>
+	
+		<action name="myresults" class="myResultsAction">
+			<result name="success">/WEB-INF/jsp/myresults-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/myresults-error.jsp</result>
+		</action>
+	
+		<action name="runtimeout" class="runTimeoutAction">
+			<result name="success">/WEB-INF/jsp/runtimeout-success.jsp</result>
+		</action>
+	
+		<action name="validityCheck" class="validityCheck">
+			<result name="error">/WEB-INF/jsp/validitycheck-error.jsp</result>
+			<result name="success">/WEB-INF/jsp/validitycheck-success.jsp</result>
+		</action>
+
+		<action name="calculateScore" class="calculateScore">
+			<result name="error">/WEB-INF/jsp/calculatescore-error.jsp</result>
+			<result name="success">/WEB-INF/jsp/calculatescore-success.jsp</result>
+		</action>
+
+		<action name="saveComment" class="saveComment">
+			<result name="error">/WEB-INF/jsp/saveComment-success.jsp</result>
+			<result name="success">/WEB-INF/jsp/saveComment-success.jsp</result>
+		</action>
+		
+		<action name="saveResultComment" class="saveResultComment">
+			<result name="error">/WEB-INF/jsp/saveResultComment-success.jsp</result>
+			<result name="success">/WEB-INF/jsp/saveResultComment-success.jsp</result>
+		</action>
+		
+		<action name="deleteResult" class="deleteResultAction">
+			<result name="success" type="redirect-action">
+        <param name="actionName">results</param>
+        <param name="key">${key}</param>
+      </result>
+		</action>
+		
+		<action name="assignUser" class="assignUserAction">
+			<result name="success">/WEB-INF/jsp/assignuser-success.jsp</result>
+		</action>
+		
+		<action name="resultDetails" class="resultDetailsAction">
+			<result name="success">/WEB-INF/jsp/resultdetails-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/resultdetails-error.jsp</result>
+			<result name="input">/WEB-INF/jsp/resultdetails-error.jsp</result>
+			<result name="login" type="redirect-action">
+            	<param name="actionName">index</param>
+            </result>
+		</action>
+		
+		<action name="concurrentUsers" class="concurrentUsersAction">
+			<result name="success">/WEB-INF/jsp/admin/concurrentusers-success.jsp</result>
+		</action>
+		
+    </package>
+
+	<package name="ajax" namespace="/ajax" extends="home">
+
+		<action name="resultDetails" class="resultDetailsAction">
+			<result name="success">/WEB-INF/jsp/ajax/resultdetails-success.jsp</result>
+			<result name="error">/WEB-INF/jsp/resultdetails-error.jsp</result>
+			<result name="input">/WEB-INF/jsp/resultdetails-error.jsp</result>
+			<result name="login" type="redirect-action">
+            	<param name="actionName">index</param>
+            </result>
+		</action>
+
+		<action name="startBatteryTest" class="startBatteryTest">
+			<result name="success">/WEB-INF/jsp/ajax/start-battery-test-success.jsp</result>
+		</action>
+
+  </package>
+
+</struts>

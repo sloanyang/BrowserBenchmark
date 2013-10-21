@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+
+    <!-- Copyright © Microsoft Corporation. All Rights Reserved. -->
+    <!-- Demo Author: Jason Weber, Microsoft Corporation -->
+    <!-- Adapted for mobile by: Charles Morris, Microsoft Corporation -->
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>HTML5 Speed Reading</title>
+    <link rel="stylesheet" type="text/css" href="SpeedReading.css" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/SpeedReading.css" />
+    <meta name="t_omni_demopage" content="1" />
+    <meta name="viewport" content="width=480, user-scalable=no" />
+</head>
+<body onload="Initialize()">
+    <a style="z-index: 100;" href="javascript:if(confirm('http://ie.microsoft.com/testdrive/mobile/Default.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ie.microsoft.com/testdrive/mobile/Default.html'" tppabs="http://ie.microsoft.com/testdrive/mobile/Default.html" title="Return to Test Drive Demos" class="Accent-WPBlue"><div style="text-align: right;">
+		Return to Test Drive Home</div></a>
+    <div class="title">Speed Reading</div>
+    <canvas id="surfaceCanvas"></canvas>
+    <div id="SRBoldStats">
+        How fast can your browser speed read?<br />
+        FPS: <span id="fpsValue"></span><br />
+    </div>
+    <div id="SRNormalStats">
+        Using: <span id="browserValue"></span><br />
+        Total Billboard Draws: <span id="drawCountValue"></span><br />
+        Average Draw Duration: <span id="averageDrawTimeValue"></span>ms<br />
+    </div>
+
+    <div class="SRDescription">Thanks for checking out this Internet Explorer 9 mobile demo. This demo uses animation techniques to flip 40 letters as fast as possible. The more powerful the underlying computer and the browser, the faster the images will flip. This demo uses HTML5 Canvas and HTML5 Audio. It's a fun way to demonstrate how Internet Explorer 9's overall performance, from hardware accelerated graphics, to fast javascript, to hardware accelerated canvas, will enable a new generation of HTML5 applications. The purpose of these demos is to convey a concept and is not intended to be used as a best practice for web development. Enjoy!</div>
+    <div id="SRFeatureDetect">Thanks for checking out this Internet Explorer 9 mobile demo.  This demo uses HTML5 canvas to flip 40 letters as fast as possible.<br /><br />  It appears that your browser does not support HTML5 canvas.  This demo looks best on Windows Phone running Internet Explorer 9.  If you already have a Windows Phone, look for the upgrade coming later this year!</div>
+    <audio id="SoundFlipRepeat" preload="auto" src="Sounds/FlipSoundRepeat.mp3" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Sounds/FlipSoundRepeat.mp3"></audio>
+    <audio id="SoundFlipSingle" preload="auto" src="Sounds/FlipSoundSingle.mp3" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Sounds/FlipSoundSingle.mp3"></audio>
+    <script type="text/javascript" src="Script/Application.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Application.js"></script>
+    <script type="text/javascript" src="Script/EventHandlers.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/EventHandlers.js"></script>
+    <script type="text/javascript" src="Script/Resources.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Resources.js"></script>
+    <script type="text/javascript" src="Script/Billboard.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Billboard.js"></script>
+    <script type="text/javascript" src="Script/Patterns.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Patterns.js"></script>
+    <script type="text/javascript" src="Script/Tile.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Tile.js"></script>
+    <script type="text/javascript" src="Script/Message.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Message.js"></script>
+    <script type="text/javascript" src="Script/Performance.js" tppabs="http://ie.microsoft.com/testdrive/mobile/Performance/SpeedReading/Script/Performance.js"></script>
+    <script type="text/javascript" src="../../includes/script/s_code_ie9td.js" tppabs="http://ie.microsoft.com/testdrive/mobile/includes/script/s_code_ie9td.js"></script>
+</body>
+</html>

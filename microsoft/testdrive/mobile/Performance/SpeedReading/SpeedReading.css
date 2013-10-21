@@ -1,0 +1,54 @@
+body 
+{
+	background-color: Black;
+	color: White;
+	font-family: "Segoe WP", Tahoma, Geneva, Verdana;
+}
+
+.title {
+	font-family:"Segoe WP Semibold", Tahoma, Geneva, Verdana;
+	margin: 0px 18px 7px 18px;
+	font-size: 40pt;
+}
+
+.Accent-WPBlue {
+	color: #1ba1e2;
+}
+
+
+#surfaceCanvas
+{
+    width: 460px; 
+    height: 390px; 
+	/* position: fixed; */
+}
+
+.SRDescription
+{
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#SRFeatureDetect
+{
+    visibility: hidden;
+    margin: 0px 18px 7px 18px;
+    font-size: 13pt;
+}
+
+#SRBoldStats
+{
+    margin: 0px 18px 7px 18px;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+#SRNormalStats
+{
+    margin: 0px 18px 7px 18px;
+    font-size: 12pt;
+}

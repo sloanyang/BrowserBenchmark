@@ -1,0 +1,98 @@
+[Introduction]
+Hugely popular Browsermark is a benchmark tool designed to measure 
+browser performance of mobile and embedded devices. 
+Browsermark measures a browser¡¯s performance in JavaScript and HTML rendering. 
+Browsermark was designed to tell an end-user 
+which browser performs the best on their mobile or embedded device. 
+It is easy to compare scores by running Browsermark again using a different browser. 
+Changing browser to the one that is faster can mean that pages with 
+dynamic content will be more responsive.
+The sources are local version which we can run tests individually.
+
+[Source Code Directories]
+1.index.html 
+Entry of the benchmark
+2.tests/benchmarks  
+Each sub-directory is a test suite. 
+Each *.js file in the sub-directory is a test case.
+3.images  
+Images for browsermark2.0.
+
+[How to make peacekeeper run individual test case]
+1.Get related resources by chrome develop tools and wget.
+2.Change all the ajax resposes to html files.
+3.Change all the absolute path to relative path in all the html and files.
+4.Delete unused ajax request in js files.
+5.Change benchmark.js in tests folder, submit the results to results.html.
+6.Add index.html, results.html and common.js
+7.Change test.js in tests folder, submit request to related test page. 
+
+[How to run individual test case]
+Open index.html in the browser. For chrome, 
+should add '--allow-file-access-from-files' command line argument.
+
+[Tests in browsermark2.0]
+1.Graphics group
+Tests browsers Graphics Processing Unit power 
+by measuring WebGL and Canvas performance. .
+
+*Graphics HTML5 Canvas
+*Graphics HTML5 WebGL
+
+2.DOM group
+Measures variety of areas, 
+like how well your browser traverse in Document Object Model Tree 
+or how fast your browser can create dynamic content.
+
+*Dom Search
+*DOM Dynamic Create
+*DOM Create Source
+*DOM Advanced Search
+
+3.CSS group
+Measures your browsers 2D and 3D performance, 
+and finally executes CSS Crunch test.
+
+*CSS 2D Rendering
+*CSS 3D Rendering
+*CSS Crunch
+*CSS Resize
+
+4.Javascript group
+Executes number crunching by doing selected Array and String operations.
+
+*Javascript Array Blur
+*Javascript Array Weighted
+*Javascript String Chat
+*Javascript String Filter
+
+5.Conformity group
+Resolves how well your browser understands HTML5 and CSS3 -standards,
+as well how well Flash and Silverlight are supported.
+
+*Conformity CSS3
+*Conformity Flash
+*Conformity HTML5
+*Conformity Silverlight
+*Conformity Network
+
+6.General group
+Measures areas like responsiveness and page load times.
+
+*General Responsiveness
+*General Page Load
+
+[What factors affect the score?]
+Other than the browser itself, the most significant factor affecting 
+the score is the type of CPU in your Internet device. 
+After that, the power of your graphics chip affects the result somewhat, 
+though mostly in situations where the card is very slow, 
+or no drivers have been installed for it. 
+Running other applications that consume system resources at the same time 
+as the benchmark is running will naturally affect the score. 
+The size of the viewable browser area also affects the score, 
+so the screen resolution you use, the size of the browser window and whether 
+the window is minimized affect the score as well. 
+Beyond these, other factors are usually not significant. 
+Your internet connection speed and network latency 
+do not influence the score in any way. 

@@ -1,0 +1,1 @@
+var test={init:function(){$.ajax(nextTest,{async:false}).done(function(b){$("#content").html($(b).find("#content").html());var a=$(b).filter("#next_test").attr("data-next");$.getScript(nextTest+"/test.js",function(){nextTest=a;benchmark.init()})})},run:function(b,a){}};

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- 
+		You can configure host specific database options by editing a file called 
+		"database.properties" file in the same folder as this file. The properties
+		set there will override the default properties (which are pointing to the 
+		ORB development database). Eg:
+		
+		database.driver=com.mysql.jdbc.Driver
+		database.url=jdbc:mysql://orb-dev.futuremark.com/orb
+		database.user=ristojc
+		database.password=dbmastah
+	 -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true"/>
+		<property name="location" value="classpath:local.properties"/>
+		<property name="properties">
+			<props>
+				<prop key="database.driver">com.mysql.jdbc.Driver</prop>
+				<prop key="database.url">jdbc:mysql://localhost/peacekeeper2</prop>
+				<prop key="database.user">root</prop> 
+				<prop key="database.password">foobar</prop> 
+				<prop key="facebook.appid"></prop> 
+				<prop key="facebook.appsecret"></prop> 
+				<prop key="rewriteenabled">false</prop> 
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${database.driver}" />
+		<property name="jdbcUrl" value="${database.url}" />
+		<property name="user" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+		
+		<property name="initialPoolSize" value="3" />
+        <property name="minPoolSize" value="3" />
+        <property name="maxPoolSize" value="100" />
+        <!-- <property name="timeout"><value>0</value></property> -->   <!-- 0 means: no timeout -->
+        <property name="idleConnectionTestPeriod" value="200" />
+        <property name="acquireIncrement" value="3" />
+        <property name="maxStatements" value="0" /> <!-- 0 means: statement caching is turned off.  -->
+        <property name="numHelperThreads" value="3" /> <!-- 3 is default --> 
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/futuremark/peacekeeper/model/impl/ResultImpl.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/impl/TestSuiteImpl.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/impl/TestImpl.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/impl/UserImpl.hbm.xml</value>
+				<!--
+				<value>com/futuremark/peacekeeper/model/statistics/TopResult.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/CpuModelTopResult.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/BrowserStatistics.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/PeriodicSqlResult.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/CpuModelsForTopList.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/BrowserPopularitySample.hbm.xml</value>
+				<value>com/futuremark/peacekeeper/model/statistics/ScoreForCpuModel.hbm.xml</value>
+				-->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop> 
+				<prop key="hibernate.show_sql">false</prop> 
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+			</props>
+		</property>
+	</bean>
+	
+	<!--
+      Including this aspectj-autoproxy element will cause spring to automatically
+      create proxies around any beans defined in this file that match the pointcuts
+      of any aspects defined in this file.
+    -->
+    <!-- 
+    <aop:aspectj-autoproxy/>
+	 -->
+
+    <!--
+      Declare the TimingAspect that we want to weave into the other beans
+      defined in this config file.
+    -->
+    <!-- 
+    <bean id="timingAspect" class="org.perf4j.log4j.aop.TimingAspect"/>
+     -->
+    
+	<bean id="hibernateInterceptor" class="com.futuremark.peacekeeper.util.HibernateSessionInterceptor">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="resultRepository" class="com.futuremark.peacekeeper.repositories.hibernate.ResultRepositoryHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="userRepository" class="com.futuremark.peacekeeper.repositories.hibernate.UserRepositoryHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="userKeyGenerator" ref="userKeyGenerator"/>
+	</bean>
+	
+	<bean id="userCounter" class="com.futuremark.peacekeeper.model.statistics.ConcurrentUsersCounter"/>
+	
+	<!-- Jane beans  -->
+	
+	<bean id="userKeyGenerator" class="com.futuremark.peacekeeper.model.impl.ShortRandomUserKeyGenerator" />
+	
+	<bean id="resultFactory" class="com.futuremark.peacekeeper.model.impl.ResultFactoryImpl"/>
+	
+	<bean id="versionFactory" class="com.futuremark.peacekeeper.model.impl.VersionFactoryImpl"/>
+	
+	<bean id="countryLookupService" class="com.futuremark.peacekeeper.model.impl.CountryLookupServiceGeoIp" />
+	
+	<bean id="benchmarkConfiguration" 
+		class="com.futuremark.peacekeeper.model.impl.BenchmarkConfigurationImpl"
+		scope="prototype">
+		<constructor-arg value="classpath:peacekeeper.suites.xml"/>
+	</bean>
+	
+	<bean id="resultValidator" class="com.futuremark.peacekeeper.model.impl.AllTestsRunnedResultValidator">
+		<constructor-arg ref="benchmarkConfiguration"/>
+	</bean>
+	
+	<bean id="startBenchmarkAction" class="com.futuremark.peacekeeper.web.StartBenchmarkAction" scope="prototype">	
+		<property name="resultFactory" ref="resultFactory"/>
+		<property name="resultRepository" ref="resultRepository"/>
+		<property name="countryLookupService" ref="countryLookupService"/>
+		<property name="concurrentUsersCounter" ref="userCounter"/>
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="addTestResultAction" class="com.futuremark.peacekeeper.web.AddTestResultAction" scope="prototype">	
+		<property name="versionFactory" ref="versionFactory"/>
+		<property name="benchmarkConfiguration" ref="benchmarkConfiguration"/>
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="showAndSaveResultAction" class="com.futuremark.peacekeeper.web.ShowAndSaveResultAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="loadUserAction" class="com.futuremark.peacekeeper.web.LoadUserAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="listUsersAction" class="com.futuremark.peacekeeper.web.ListUsersAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="userDetailsAction" class="com.futuremark.peacekeeper.web.UserDetailsAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="resultDetailsAction" class="com.futuremark.peacekeeper.web.ResultDetailsAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+
+	<bean id="runTestAction" class="com.futuremark.peacekeeper.web.RunTestAction" scope="prototype">
+		<property name="benchmarkConfiguration" ref="benchmarkConfiguration"/>
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="resultValidator" ref="resultValidator"/>
+		<property name="concurrentUsersCounter" ref="userCounter"/>
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="runSingleTestAction" class="com.futuremark.peacekeeper.web.RunSingleTestAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="resultsAction" class="com.futuremark.peacekeeper.web.ResultsAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="batteryResultsAction" class="com.futuremark.peacekeeper.web.BatteryResultsAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+
+	<bean id="myResultsAction" class="com.futuremark.peacekeeper.web.MyResultsAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+
+	<bean id="runTimeoutAction" class="com.futuremark.peacekeeper.web.RunTimeoutAction" scope="prototype">
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="peacekeeperSupport" class="com.futuremark.peacekeeper.web.PeacekeeperSupport" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="validityCheck" class="com.futuremark.peacekeeper.web.ValidityCheckAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+
+	<bean id="calculateScore" class="com.futuremark.peacekeeper.web.CalculateScoreAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+		
+	<bean id="saveComment" class="com.futuremark.peacekeeper.web.SaveCommentAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="saveResultComment" class="com.futuremark.peacekeeper.web.SaveResultCommentAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="deleteResultAction" class="com.futuremark.peacekeeper.web.DeleteResultAction" scope="prototype">
+		<property name="resultRepository" ref="resultRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="concurrentUsersAction" class="com.futuremark.peacekeeper.web.admin.ConcurrentUsersAction" scope="prototype">
+		<property name="concurrentUsersCounter" ref="userCounter"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="indexAction" class="com.futuremark.peacekeeper.web.IndexAction" scope="prototype">
+		<property name="concurrentUsersCounter" ref="userCounter"/>
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+	<bean id="assignUserAction" class="com.futuremark.peacekeeper.web.AssignUserAction" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="facebookAppId" value="${facebook.appid}" />
+		<property name="facebookAppSecret" value="${facebook.appsecret}" />
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+
+	<bean id="startBatteryTest" class="com.futuremark.peacekeeper.web.StartBatteryTest" scope="prototype">
+		<property name="userRepository" ref="userRepository"/>	
+		<property name="rewriteEnabled" value="${rewriteenabled}" />
+	</bean>
+	
+</beans>
+

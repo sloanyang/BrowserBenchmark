@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=480"/>
+	<title>GUIMark3 HTML5 Bitmap</title>
+    <link rel="stylesheet" href="../guimark3.css" type="text/css"/>
+    <script type="text/javascript" src="../guimark3.js"></script>
+	
+<script type="text/javascript">
+
+var STAGE = { width:480, height:640 };
+var FRAMERATE = 60;
+var context = null;
+var header = null;
+
+var assets = {
+	Ship1:"ship1.png",
+	Ship2:"ship2.png",
+	Ship3:"ship3.png",
+	Cloud:"cloud.png",
+	Ground:"groundtile.png",
+	Bullet:"bullet.png",
+	EnemyBullet:"enemybullet.png"
+};
+function preloadAssets(){
+	var preloaded = 0;
+	var count = 0;
+	for(var asset in assets){
+		count++;
+		var img = new Image();
+		img.onload = function(){
+			preloaded++;
+			if(preloaded == count){
+				init();
+			}
+		}
+		img.src = assets[asset];
+		assets[asset] = img;
+	}
+}
+
+function init(){
+	var canvas = document.getElementById('world');
+	if (canvas && canvas.getContext) {
+		//setup page
+		context = canvas.getContext('2d');
+		header = new PerformanceBar( "GM3 HTML5 Bitmap", document.getElementById('headerbar') );
+		setInterval( loop, 1000 / FRAMERATE );
+		
+		//initialize test variables
+		gameTime = TimeUtil.getTimer()+30000;
+	}
+}
+
+var gameTime = 0;
+function loop(){
+	gameTime = TimeUtil.getTimer()+30000;
+	context.clearRect(0, 0, STAGE.width, STAGE.height);
+	drawGround();
+	drawPlanesBackdrop();
+	drawClouds();
+	drawEnemies();
+	drawBullets();
+	drawShip();
+	header.updatePerformance();
+}
+
+function drawGround(tick){
+	var tilesize = 128;
+	var tileHeights = Math.ceil(STAGE.height / tilesize) *tilesize;
+	var tileBaseY = Math.floor(gameTime/60) % tileHeights;
+	
+	
+	var tileY = tileBaseY;
+	while(tileY-tilesize > -tilesize){
+		tileY -= tilesize;
+	}
+	//console.log(tileBaseY);
+	while(tileY+tilesize < STAGE.height+tilesize){
+		var tileX = 0;
+		while(tileX+tilesize < STAGE.width+tilesize){
+			context.drawImage(assets.Ground, tileX, tileY);
+			tileX += tilesize;
+		}
+		tileY += tilesize;
+	}
+}
+
+
+
+var backdropIndex = 0;
+var backdrops = [];
+function drawPlanesBackdrop(diff){
+	var shipCount = Math.floor(gameTime / 2000);
+	var half = STAGE.width/2;
+	var ship;
+	while(backdropIndex < shipCount){
+		backdropIndex++;
+		ship = new GameObject();
+		ship.time = backdropIndex*2000;
+		ship.width = 48;
+		ship.height = 48;
+		ship.x = Math.random()*(half-48);
+		backdrops.push(ship);
+		ship = new GameObject();
+		ship.time = 1000 + backdropIndex*2000;
+		ship.width = 48;
+		ship.height = 48;
+		ship.x = half + (Math.random()*(half-48));
+		backdrops.push(ship);
+	}
+	for(var i=backdrops.length-1; i>-1; i--){
+		ship = backdrops[i];
+		ship.y = (gameTime-ship.time) / 33;
+		ship.y -= ship.height;
+		if(ship.y > STAGE.height+ship.height){
+			backdrops.splice(i, 1);
+		}else{
+			context.drawImage(assets.Ship3, Math.floor(ship.x), Math.floor(ship.y));
+		}
+	}
+}
+
+var cloudIndex = 0;
+var clouds = [];
+function drawClouds(diff){
+	var cloudCount = Math.floor(gameTime / 3000);
+	var half = STAGE.width/2;
+	var cloud;
+	while(cloudIndex < cloudCount){
+		cloudIndex++;
+		cloud = new GameObject();
+		cloud.time = cloudIndex*3000;
+		cloud.width = 128;
+		cloud.height = 128;
+		cloud.x = Math.random()*(half-128);
+		clouds.push(cloud);
+		cloud = new GameObject();
+		cloud.time = 1500 + cloudIndex*3000;
+		cloud.width = 128;
+		cloud.height = 128;
+		cloud.x = half + (Math.random()*(half-128));
+		clouds.push(cloud);
+	}
+	for(var i=clouds.length-1; i>-1; i--){
+		cloud = clouds[i];
+		cloud.y = (gameTime-cloud.time) / 20;
+		cloud.y -= cloud.height;
+		if(cloud.y > STAGE.height+cloud.height){
+			clouds.splice(i, 1);
+		}else{
+			context.drawImage(assets.Cloud, Math.floor(cloud.x), Math.floor(cloud.y));
+		}
+	}
+}
+
+var enemyIndex = 0;
+var enemies = [];
+function drawEnemies(diff){
+	var shipCount = Math.floor(gameTime / 500);
+	while(enemyIndex < shipCount){
+		enemyIndex++;
+		var ship = new Ship();
+		ship.time = enemyIndex*500;
+		ship.width = 64;
+		ship.height = 64;
+		ship.x = Math.random()*(STAGE.width-64);
+		enemies.push(ship);
+	}
+	for(var i=enemies.length-1; i>-1; i--){
+		var ship = enemies[i];
+		ship.y = (gameTime-ship.time) / 5;
+		ship.y -= ship.height;
+		if(ship.y > STAGE.height+ship.height){
+			enemies.splice(i, 1);
+		}else{
+			context.drawImage(assets.Ship2, Math.floor(ship.x), Math.floor(ship.y));
+			drawEnemyBullets(ship);
+		}
+	}
+}
+
+function drawEnemyBullets(ship){
+	var bulletCount = Math.floor((gameTime-ship.time) / 500);
+	var bullet;
+	var down = (Math.PI)/2;
+	while(ship.bulletCount < bulletCount){
+		ship.bulletCount++;
+		bullet = new Bullet();
+		bullet.time = ship.time + (ship.bulletCount*500);
+		bullet.width = 20;
+		bullet.height = 20;
+		bullet.angle = down - 0.5;
+		ship.bullets.push(bullet);
+		
+		bullet = new Bullet();
+		bullet.time = ship.time + (ship.bulletCount*500);
+		bullet.width = 20;
+		bullet.height = 20;
+		bullet.angle = down;
+		ship.bullets.push(bullet);
+		
+		bullet = new Bullet();
+		bullet.time = ship.time + (ship.bulletCount*500);
+		bullet.width = 20;
+		bullet.height = 20;
+		bullet.angle = down + 0.5;
+		ship.bullets.push(bullet);
+	}
+	for(var i=ship.bullets.length-1; i>-1; i--){
+		bullet = ship.bullets[i];
+		var distance = (gameTime-bullet.time) / 4;
+		bullet.x = ship.x + 22 + (Math.cos(bullet.angle)*distance);
+		bullet.y = ship.y + ship.height + (Math.sin(bullet.angle)*distance);
+		if(bullet.y > STAGE.height+bullet.height){
+			ship.bullets.splice(i, 1);
+		}else{
+			context.drawImage(assets.EnemyBullet, Math.floor(bullet.x), Math.floor(bullet.y));
+		}
+	}
+} 
+
+var bulletIndex = 0;
+var bullets = [];
+function drawBullets(diff){
+	var bulletCount = Math.floor(gameTime / 100);
+	while(bulletIndex < bulletCount){
+		bulletIndex++;
+		var bullet = new GameObject();
+		bullet.time = bulletIndex*100;
+		bullet.width = 20;
+		bullet.height = 20;
+		var freq = gameTime % 3000;
+		var usableWidth = STAGE.width-64;
+		if(freq < 1500){
+			bullet.x = (freq/1500)*usableWidth;
+		}else{
+			freq -= 1500;
+			bullet.x = usableWidth-((freq/1500)*usableWidth);
+		}
+		bullet.x += 20;
+		bullets.push(bullet);
+	}
+	for(var i=bullets.length-1; i>-1; i--){
+		var bullet = bullets[i];
+		var offset = (gameTime-bullet.time) / 2;
+		bullet.y = STAGE.height - 64 - offset;
+		if(bullet.y < -bullet.height){
+			bullets.splice(i, 1);
+		}else{
+			context.drawImage(assets.Bullet, Math.floor(bullet.x), Math.floor(bullet.y));
+		}
+	}
+}
+
+var player = null;
+function drawShip(){
+	if(player == null){
+		player = new GameObject();
+		player.width = 64;
+		player.height = 64;
+		player.y = STAGE.height - player.height;
+	}
+	var freq = gameTime % 3000;
+	var usableWidth = STAGE.width-player.width;
+	if(freq < 1500){
+		player.x = (freq/1500)*usableWidth;
+	}else{
+		freq -= 1500;
+		player.x = usableWidth-((freq/1500)*usableWidth);
+	}
+	context.drawImage(assets.Ship1, Math.floor(player.x), Math.floor(player.y));
+}
+
+
+function GameObject(){
+	this.x = 0;
+	this.y = 0;
+	this.width = 0;
+	this.height = 0;
+	this.time = 0;
+}
+function Ship(){
+	this.bulletCount = 0;
+	this.bullets = [];
+}
+Ship.prototype = new GameObject();
+
+function Bullet(){
+	this.angle = 0;
+}
+Bullet.prototype = new GameObject();
+
+</script>
+</head>
+<body onLoad="preloadAssets()">
+	<div id="headerbar"></div>
+	<canvas id="world" width="480" height="640">
+        <p>You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p>
+    </canvas>
+</body>
+</html>

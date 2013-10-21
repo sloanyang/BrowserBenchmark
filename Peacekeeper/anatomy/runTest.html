@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<!-- Futuremark Peacekeeper -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Peacekeeper</title>
+
+<link rel="stylesheet" href="css/test-style.css" type="text/css" media="screen" />
+
+<script src="js/libs/jquery-1.6.4.min.js"></script>
+<script src="js/benchmark.js"></script>
+<script src="js/assetmanager.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+
+
+<script type="text/javascript">
+benchmark.suiteProgress = 6;
+benchmark.suiteCount = 6;
+benchmark.suiteName = $.urlParam("suite");//"experimental";
+benchmark.suiteTitle = "HTML5 Canvas";
+benchmark.suiteBackground = "";
+benchmark.suiteDescription = "The canvas test evaluates your browsers element is ability to create dynamic, scriptable rendering of 2D shapes and bitmap images.";
+benchmark.remainingTime = "4 minutes left";
+//alert($.urlParam("test"));
+benchmark.testObjectName = $.urlParam("test");//"experimentalRipple02";
+benchmark.testDescription = "Here we have the same ripple effect, but with a much larger area. ";
+</script>
+
+
+
+</head>
+<body onload="benchmark.init()">
+
+<div id="playground"></div>
+<div id="hiddenPlayground"></div>
+
+</body>
+</html>

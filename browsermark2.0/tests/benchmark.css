@@ -1,0 +1,324 @@
+section
+{
+    width: 40%;
+    float: left;
+}
+
+aside
+{
+    width: 20%;
+    float: left;
+}
+
+footer
+{
+    height: 50px;
+    clear: both;
+}
+
+footer > section:last-of-type
+{
+    width: 60%;
+}
+
+iframe
+{
+    position: absolute;
+    z-index: -1;
+    left: 45%;
+    top: 33%;
+}
+
+/* 1. Select all ul-elements that are preceded by article */
+#test_area article~ul span.highlight
+{
+    text-shadow: 2px 2px 2px #666;
+}
+
+/* 2. Select all links that href starts with https */
+#test_area a[href^="https"] span.highlight
+{
+    font-weight: bold;
+}
+
+/* 3. Select all png images */
+#test_area img[src$=".png"]
+{
+    border: 1px solid #fff;
+}
+
+/* 4. Select all image-elements from section that have string "some" in their id */
+#test_area section[id*="some"] img
+{
+    height: 20px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+/* 5. Select all code-elements that is first code-element of its parent */
+#test_area code:first-of-type
+{
+    padding: 10px;
+}
+
+/* 6. Select all code-elements that is last code-element of its parent */
+#test_area code:last-of-type
+{
+    padding: 20px;
+}
+
+/* 7. Select all code-elements that is only code-element of its parent */
+#test_area code:only-of-type
+{
+    padding: 15px;
+}
+
+/* 8. Select articles that are only child of its parent */
+#test_area article:only-child span.highlight
+{
+    background-color: rgba(88, 88, 88, 0.8);
+}
+
+/* 9. Select article-elements that are third of its parent */
+#test_area article:nth-child(3) span.highlight
+{
+    background-color: rgba(99, 99, 99, 0.9)
+}
+
+/* 10. Select articles that are second last of its parent */
+#test_area article:nth-last-child(2) span.highlight
+{
+    background-color: rgba(110, 110, 110, 1.0);
+}
+
+/* 11. Select first p-elements of its parent (equals with p:first-child) */
+#test_area p:nth-of-type(1) span.highlight
+{
+    background-color: rgba(121, 121, 121, 0.9);
+}
+
+/* 12. Select last p-elements of its parent (equals with p:last-child) */
+#test_area p:nth-last-of-type(1) span.highlight
+{
+    background-color: rgba(132, 132, 132, 0.8);
+}
+
+/* 13. Select last p-elements of its parent (equals with p:nth-last-of-type(1)) */
+#test_area p:last-child span.highlight
+{
+    background-color: rgba(143, 143, 143, 0.7);
+}
+
+/* 14. Select root of the document */
+#test_area :root span.highlight
+{
+    font-style: italic;
+}
+
+/* 15. Select empty li-elements */
+#test_area li:empty
+{
+    display: none;
+}
+
+/* 16. Select the current active article */
+#test_area article:target
+{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 17. Select enabled radio inputs */
+#test_area input[type="radio"]:enabled
+{
+    outline: #fff dotted thin;
+}
+
+/* 18. Select disabled radio inputs */
+#test_area input[type="radio"]:disabled
+{
+    opacity: 0.5;
+}
+
+/* 19. Select checked checkboxes */
+#test_area input[type="checkbox"]:checked
+{
+    outline: #fff dotted thin;
+}
+
+/* 20. Select every non-aside element */
+#test_area :not(aside) span.highlight
+{
+    text-decoration: underline;
+}
+
+.cube {
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+          -ms-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+    }
+    
+.cube figure {
+  display: block;
+  position: absolute;
+  width: 196px;
+  height: 196px;
+  line-height: 196px;
+  font-size: 120px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cube.panels-backface-invisible figure {
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+       -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.cube .front  {
+  -webkit-transform: translateZ( 100px );
+     -moz-transform: translateZ( 100px );
+      -ms-transform: translateZ( 100px );
+       -o-transform: translateZ( 100px );
+          transform: translateZ( 100px );
+}
+.cube .back   {
+  -webkit-transform: rotateX( -180deg ) translateZ( 100px );
+     -moz-transform: rotateX( -180deg ) translateZ( 100px );
+      -ms-transform: rotateX( -180deg ) translateZ( 100px );
+       -o-transform: rotateX( -180deg ) translateZ( 100px );
+          transform: rotateX( -180deg ) translateZ( 100px );
+}
+.cube .right {
+  -webkit-transform: rotateY(   90deg ) translateZ( 100px );
+     -moz-transform: rotateY(   90deg ) translateZ( 100px );
+      -ms-transform: rotateY(   90deg ) translateZ( 100px );
+       -o-transform: rotateY(   90deg ) translateZ( 100px );
+          transform: rotateY(   90deg ) translateZ( 100px );
+}
+.cube .left {
+  -webkit-transform: rotateY(  -90deg ) translateZ( 100px );
+     -moz-transform: rotateY(  -90deg ) translateZ( 100px );
+      -ms-transform: rotateY(  -90deg ) translateZ( 100px );
+       -o-transform: rotateY(  -90deg ) translateZ( 100px );
+          transform: rotateY(  -90deg ) translateZ( 100px );
+}
+.cube .top {
+  -webkit-transform: rotateX(   90deg ) translateZ( 100px );
+     -moz-transform: rotateX(   90deg ) translateZ( 100px );
+      -ms-transform: rotateX(   90deg ) translateZ( 100px );
+       -o-transform: rotateX(   90deg ) translateZ( 100px );
+          transform: rotateX(   90deg ) translateZ( 100px );
+}
+.cube .bottom {
+  -webkit-transform: rotateX(  -90deg ) translateZ( 100px );
+     -moz-transform: rotateX(  -90deg ) translateZ( 100px );
+      -ms-transform: rotateX(  -90deg ) translateZ( 100px );
+       -o-transform: rotateX(  -90deg ) translateZ( 100px );
+          transform: rotateX(  -90deg ) translateZ( 100px );
+}
+
+div#resize div
+{
+    margin: 1%;
+    padding: 1%;
+    border: 1px solid #fff;
+    font-size: 1px;
+    float: left;
+}
+
+div#resize
+{
+    border: 1px solid #fff;
+    margin: auto;
+    padding: 0;
+    width: 498px;
+    height: 498px;
+    font-size: 1px;
+}
+
+.fullwidth
+{
+    width: 94%;
+}
+
+.fullheight
+{
+    height: 94%;
+}
+
+.threefourthswidth
+{
+    width: 69%;
+}
+
+.threefourthsheight
+{
+    height: 69%;
+}
+
+.twothirdswidth
+{
+    width: 60%;
+}
+
+.twothirdsheight
+{
+    height: 60%;
+}
+
+.halfwidth
+{
+    width: 44%;
+}
+
+.halfheight
+{
+    height: 44%;
+}
+
+.onethirdmiddlewidth
+{
+    width: 28%;
+}
+
+.onethirdmiddleheight
+{
+    height: 28%;
+}
+
+.onethirdwidth
+{
+    width: 27%;
+}
+
+.onethirdheight
+{
+    height: 27%;
+}
+
+.onefourthwidth
+{
+    width: 19%;
+}
+
+.onefourthheight
+{
+    height: 19%;
+}
+
+#transform_this
+{
+  -webkit-opacity: 0.5;
+     -moz-opacity: 0.5;
+      -ms-opacity: 0.5;
+       -o-opacity: 0.5;
+          opacity: 0.5;
+           filter: alpha(opacity = 50);
+}

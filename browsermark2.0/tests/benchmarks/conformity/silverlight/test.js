@@ -1,0 +1,3 @@
+var guide={isDoable:true,operations:0,time:0,internalCounter:false,testName:"Conformity Silverlight",testVersion:"2.0",compareScore:1,isConformity:1};var test={init:function(){
+//$.ajax({url:"/ajax/set_test",async:false,type:"POST",data:{test_name:guide.testName,test_version:guide.testVersion}});
+return guide},run:function(f,a){var b=0;var e=PluginDetect.getVersion("Silverlight");var d="0.0.0.0";if(e!=null){b=1;d=e.replace(/,/gi,".")}var c={silverlightVersion:d};benchmark.submitResult(b,guide,c)}};

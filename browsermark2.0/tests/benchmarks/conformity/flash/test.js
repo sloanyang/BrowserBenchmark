@@ -1,0 +1,3 @@
+var guide={isDoable:true,operations:0,time:0,internalCounter:false,testName:"Conformity Flash",testVersion:"2.0",compareScore:1,isConformity:1};var test={init:function(){
+//$.ajax({url:"/ajax/set_test",async:false,type:"POST",data:{test_name:guide.testName,test_version:guide.testVersion}});
+return guide},run:function(e,a){var b=0;var d={major:0,minor:0,release:0};if(swfobject.hasFlashPlayerVersion("1")){b=1;d=swfobject.getFlashPlayerVersion()}var c={flashVersion:d.major+"."+d.minor+"."+d.release};benchmark.submitResult(b,guide,c)}};

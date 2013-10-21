@@ -1,0 +1,307 @@
+﻿<benchmark>
+	
+	<suite>
+		<id>render</id>
+		<title>Rendering</title>
+		<description>Now testing your browser's ability to render and modify the HTML elements used in typical web pages.</description>
+		<background></background>
+		<remaining>5 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test>
+			  <id>renderGrid01</id>
+			  <description>Now testing your browser's ability to render and modify the HTML elements used in typical web pages. In a fast browser you'll see a smooth animation of colored squares.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>renderGrid02</id>
+			  <description>This second test increases the number of squares. Fast desktops should breeze through, while tablets and phones start to slow.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>renderGrid03</id>
+			  <description>The final test in this set should be sufficiently taxing for any system.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>renderPhysics</id>
+			  <description>This physics test simulates bouncing dandelion florts and their collision physics. The test measures both DOM update speed and mathematical methods.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+		</tests>
+	</suite>
+
+	<suite>
+		<id>html5</id>
+		<title>HTML5 Capabilities</title>
+		<description>Now testing your browsers HTML5 features: HTML5 video, WebGL 3D graphics and multithreaded Web Workers. These tests do not count toward the overall performance score.</description>
+		<background></background>
+		<remaining>4 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+
+			<test>
+			  <id>webglSphere</id>
+			  <description>The WebGL in HTML5 allows fullblown 3D graphics within the browser without any addons. The test renders a simple transparent 3D sphere, inside which are six bumbmapped spheres. The balls bounce within the cube with real simplified physics. </description>
+			  <scripts>
+			    <script>Collisions.js</script>
+			    <script>mjs.js</script>
+			  </scripts>
+			</test>
+
+			<test>
+			  <id>videoPosterSupport</id>
+			  <description>Now testing your browsers ability to display a poster image on the HTML5 video player.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>videoCodecH264</id>
+			  <description>Now testing your browsers ability to play HTML5 videos encoded with the H.264/MPEG-4 AVC codec.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>videoCodecTheora</id>
+			  <description>Now testing your browsers ability to play HTML5 videos encoded with the Theora codec.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>videoCodecWebM</id>
+			  <description>Now testing your browsers ability to play HTML5 videos encoded with the WebM codec.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+
+			<test>
+			  <id>workerContrast01</id>
+			  <description>Web Workers allow the browsers to work on multiple tasks simultaneously. This test performs an intensive contrast manipulation to two images at the same time.</description>
+			  <scripts>
+			    <script>benchmarkTimer.js</script>
+			  </scripts>
+			</test>
+			<test>
+			  <id>workerContrast02</id>
+			  <description>Now we do the same again for four images at the same time. Systems that have multiple CPU cores will shine here.</description>
+			  <scripts>
+			    <script>benchmarkTimer.js</script>
+			  </scripts>
+			</test>
+
+		  <test>
+        <id>gamingSpitfire</id>
+        <description>For this test we created this simple game with a modified version of Crafty, and the test itself is a recorded game. This test will tell you how good your browser is for 2D games.</description>
+        <scripts>
+          <script>libs/crafty.js</script>
+          <script>shared/gamingReel.js</script>
+        </scripts>
+  		</test>
+
+		</tests>
+	</suite>
+
+
+	<suite>
+		<id>experimental</id>
+		<title>HTML5 Canvas</title>
+		<description>The canvas test evaluates your browsers element is ability to create dynamic, scriptable rendering of 2D shapes and bitmap images.</description>
+		<background></background>
+		<remaining>4 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test>
+			  <id>experimentalRipple01</id>
+			  <description>The canvas test evaluates your browsers ability to create dynamic, scriptable rendering of 2D shapes and bitmap images. First test has a fairly small area inside which we simulate a water ripple effect.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>experimentalRipple02</id>
+			  <description>Here we have the same ripple effect, but with a much larger area. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<!--<test><id>experimentalMovie</id></test>-->
+		</tests>
+	</suite>
+
+	<suite>
+		<id>array</id>
+		<title>Data</title>
+		<description>Almost everything you see on a dynamic webpage uses JavaScript arrays. These tests measure your browser's ability to add, remove and modify data stored in an array.</description>
+		<background>array</background>
+		<remaining>2 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test>
+			  <id>arrayCombined</id>
+			  <description>Almost everything you see on a dynamic webpage uses JavaScript arrays. These tests measure your browser's ability to add, remove and modify data stored in an array. First we tests various array functions at large.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>arrayWeighted</id>
+			  <description>And now we put more emphasis on the array functions that are most often used on popular webpages.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+		</tests>
+	</suite>
+
+	<suite>
+		<id>dom</id>
+		<title>DOM operations</title>
+		<description>DOM, or Document Object Model, is the standard API JavaScript uses to create dynamic webpages. These tests use both old and HTML5 functionality to traverse the DOM tree.</description>
+		<background>dom</background>
+		<remaining>1 minute left</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test>
+			  <id>domGetElements</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domDynamicCreationCreateElement</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domDynamicCreationInnerHTML</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domJQueryAttributeFilters</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domJQueryBasicFilters</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domJQueryBasics</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domJQueryContentFilters</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domJQueryHierarchy</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. </description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>domQueryselector</id>
+			  <description>DOM, the Document Object Model, is the standard API JavaScript uses to create dynamic webpages. Here we use the new HTML5 way to access the tree.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+		</tests>
+	</suite>
+	
+	<suite>
+		<id>string</id>
+		<title>Text parsing</title>
+		<description>These tests measure your browsers performance in typical text manipulations such as using a profanity filter for chats, browser detection and form validation.</description>
+		<background>string</background>
+		<remaining>Less than a minute</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test>
+			  <id>stringChat</id>
+			  <description>These tests measure your browsers performance in typical text manipulations. Here we test a simple profanity filter.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>stringDetectBrowser</id>
+			  <description>These tests measure your browsers performance in typical text manipulations. This test does browser detection, which is very common on webpages.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>stringFilter</id>
+			  <description>These tests measure your browsers performance in typical text manipulations. Here we filter out elements from a list.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>stringValidateForm</id>
+			  <description>These tests measure your browsers performance in typical text manipulations. This one does form validation.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+			<test>
+			  <id>stringWeighted</id>
+			  <description>These tests measure your browsers performance in typical text manipulations. Now we test typical string functions, giving emphasis to those used most often by popular webpages.</description>
+			  <scripts>
+			  </scripts>
+			</test>
+		</tests>
+	</suite>
+
+	<!--
+	<suite>
+		<id>webgl</id>
+		<title>HTML5 WebGL</title>
+		<description>WebGL allows full 3D graphics in a browser without the need for any external plug-ins.</description>
+		<background>blank</background>
+		<remaining>5 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+
+		</tests>
+	</suite>
+	
+	<suite>
+		<id>gaming</id>
+		<title>Gaming</title>
+		<description>Gaming tests.</description>
+		<background>blank</background>
+		<remaining>5 minutes left</remaining>
+		<repeat>true</repeat>
+		<tests>
+			<test><id>gamingSpitfire</id></test>
+		</tests>
+	</suite>
+
+	<suite>
+		<id>worker</id>
+		<title>HTML5 Multiprocessing</title>
+		<description>With the HTML5 Web Worker, JavaScript is able to perform multiple actions concurrently.</description>
+		<background>blank</background>
+		<remaining>5 minutes left</remaining>
+		<repeat>false</repeat>
+		<tests>
+			<test><id>workerContrast01</id></test>
+			<test><id>workerContrast02</id></test>
+			<test><id>workerContrast03</id></test>
+		</tests>
+	</suite>
+  -->
+  
+
+	
+	
+
+
+</benchmark>

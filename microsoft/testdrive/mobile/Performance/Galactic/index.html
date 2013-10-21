@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Copyright © Microsoft Corporation. All Rights Reserved. 
+    <!-- Audio track created by agcnf_media (http://www.pond5.com/artist/agcnf_media) / Pond5.com -->
+    <!-- Space photos courtesy of NASA / Nasa.gov -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UIF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>Galactic</title>
+    <meta name="t_omni_demopage" content="1" />
+    <!--<meta name="viewport" content="width=480, initial-scale=1, maximum-scale=1, user-scallable=no" />-->
+    <meta name="viewport" content="width=480,height=727, initial-scale=1, maximum-scale=1, user-scallable=no" />
+    <meta HTTP-EQUIV="CACHE-CONTROL" content="NO-CACHE" />
+    <meta name="description" content="IE9 Test Drive Demo" />
+    <link rel="stylesheet" type="text/css" href="../../Includes/Styles/ReturnAndShareControls.css" />
+    <link rel="stylesheet" type="text/css" href="Demo.css" />
+    <link rel="shortcut icon" href="../../Includes/Image/FavIcon.ico" />
+    <script type="text/javascript" src="../../Includes/Script/FeatureDetectCanvas.js"></script>
+    <script type="text/javascript" src="../../Includes/Script/FeatureDetectES5Properties.js"></script>
+    <script type="text/javascript">
+//    to play sound
+        function AudioPlay() {
+        var audioElement = document.getElementById("bgMusic");
+        audioElement.play();
+            }
+    </script>
+     <style>  #FPS_text{
+            position:absolute;
+            top:5px;
+            left:0px;
+            color:White;
+            font-size:22px;
+            font-family:sans-serif;
+        }
+        #NASA_text{
+            position:absolute;
+            top:5px;
+            left:200px;
+            color:White;
+            font-size:18px;
+            font-family:sans-serif;
+        }
+        </style>
+
+</head>
+<body onload="AudioPlay()">
+<!--<body>-->
+   <!--<div id="ReturnAndShareControls"></div>-->
+    <label id="FPS_text">FPS=</label>
+    <label id="NASA_text">Space photos courtesy of NASA</label>
+    <div id="DemoScreenreaderText">
+        This demo shows a 3D scene rendered using Javascript and HTML5 Canvas. The scene depicts part of our galaxy, containing the sun and several planets. Each planet orbits the sun, and Earth's moon orbits Earth. You can change the viewpoint by pressing the Q key. The +/- keys speed up and slow down the simulation, and the R key resets everything to default values. Keys 1-5 toggle layers in the scene, hiding and showing different objects.
+    </div>
+    <!-- <audio autoplay loop src="sounds/space1.mp3" id="bgMusic1" alt="Space background music"></audio> -->
+    <audio controls="controls" src="sounds/space1.mp3" id="bgMusic" alt="Space background music"  style="visibility:hidden" onended="AudioPlay()"></audio> 
+    <!--<img src="textures/title.png" id="Title" class="Hidden" width="1516" height="959" alt="Galactic logo">-->
+     <img src="textures/space.jpg" id="Img1" width="480" height="707" alt="Galactic logo">     
+    <script type="text/javascript" src="Demo.js"></script>
+    <script type="text/javascript" src="../../Includes/Script/TestDriveCommon.js"></script>
+    <script type="text/javascript" src="../../Includes/Script/ReturnAndShareControls.js"></script>
+</body>
+</html>

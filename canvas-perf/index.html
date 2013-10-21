@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Canvas Perf</title>
+    <!--[if lt IE 9]><script type="text/javascript" src="../../../../../bin/flashcanvas.js"></script><![endif]-->
+    <script class="javascript" src="util.js"></script>
+    <script class="javascript" src="canvas_perf.js"></script>
+    <script class="javascript" src="canvas_demo_spiral_stars.js"></script>
+  </head>
+
+  <body onload="perf=canvas_perf();demo=canvas_demo_spiral_stars()">
+    <h1>Canvas Performance Benchmark</h1>
+
+    <div style="position:absolute; top:50px; left:10px">
+      <button onclick="demo.stop();perf.start()">Start Perf</button>
+      <input id="alpha" type="checkbox">with &alpha;</input>
+      <button onclick="perf.stop();demo.start()">Demo Start</button>
+      <button onclick="perf.stop();demo.stop()">Stop</button>
+      <br/>
+    
+      <canvas id="cvs" width="480px" height="480px"
+              style="background-color:black">
+      </canvas>
+    </div>
+
+    <div style="position:absolute; top:50px; left:500px; width:400px">
+      <button onclick="log.clear()">Clear</button>
+      <pre id="output"
+           style="margin:0px;
+                  overflow: auto;
+                  height: 480px;
+                  border: 1px solid #000;
+                  background-color: #eee;
+                  ">&nbsp;</pre>
+    </div>
+    
+  </body>
+</html>

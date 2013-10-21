@@ -1,0 +1,30 @@
+<ehcache>
+
+	<!-- 
+	<diskStore path="java.io.tmp" />
+	 -->
+	
+	<defaultCache 
+		maxElementsInMemory="100" 
+		eternal="false"
+		timeToIdleSeconds="120" 
+		timeToLiveSeconds="120" 
+		overflowToDisk="false" />
+		
+	<cache 
+		name="com.futuremark.jane.model.systeminfo.systeminfo_3_17.SystemInfo_3_17" 
+		maxElementsInMemory="250" />
+	
+	<cache 
+		name="com.futuremark.peacekeeper.model.impl.TestImpl" 
+		maxElementsInMemory="2000" />
+	
+	<cache 
+		name="com.futuremark.peacekeeper.model.impl.TestSuiteImpl" 
+		maxElementsInMemory="500" />
+		
+	<cache 
+		name="com.futuremark.peacekeeper.model.impl.ResultImpl" 
+		maxElementsInMemory="250" />
+		
+</ehcache>

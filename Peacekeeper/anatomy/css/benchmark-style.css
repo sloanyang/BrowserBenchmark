@@ -1,0 +1,175 @@
+/**
+ * Styles for benchmark test window.
+ */
+
+#menu {
+	height: 87px;
+	background: url(http://peacekeeper.futuremark.com/images/logo.gif) top left no-repeat;
+}
+
+#bg {
+	background: url(http://peacekeeper.futuremark.com/images/logo-benchmark.png) top center no-repeat;
+	min-height: 400px;
+}
+
+div#progressBarContainer {
+	width: 400px;	
+}
+
+div#progressBarLabel {
+	float: left;
+	width: 100px;
+	font-size: 10px;
+	text-align: right;
+}
+
+div#progressBarLabel p {
+	line-height: 17px;
+	margin: 0;
+	padding: 0 5px 0 0;
+}
+
+div#progressBarAnchor {
+	float: left;
+	position: relative;
+	width: 200px;
+	height: 17px;
+}
+
+div#progressBarBackground {
+	position: absolute;
+	width: 200px;
+	height: 17px;
+	background: url(../images/v2/progress-container.png) no-repeat top left;
+}
+
+div#progressBar {
+	position: absolute;
+	width: 0px;
+	height: 17px;
+	background: #d2d2d2;
+}
+
+div#progressRemaining {
+	float: left;
+	width: 100px;
+	font-size: 10px;
+}
+
+div#progressRemaining p {
+	line-height: 17px;
+	margin: 0;
+	padding: 0 0 0 5px;
+}
+
+#playgroundContainer {
+  	clear: both;
+  	background: url(../images/v2/test-box.png) no-repeat;
+	width: 1000px;
+	height: 570px;
+	margin: 0;
+}
+
+#playgroundContainer iframe {
+  margin: 5px 4px 0;
+}
+
+#playgroundAnchor {
+	position: absolute;
+} 
+
+#playgroundFrame {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 851px;
+	height: 501px;
+}
+
+#test-description {
+  color: #464646;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0 0 10px;
+  padding: 10px 200px;
+  text-align: center;
+}
+
+#playgroundInfoAnchor {
+	position: absolute;
+}
+
+#playgroundInfo {
+	position: absolute;	
+	top: -10px;
+	width: 873px;
+	font-size: 19px;
+	color: #ff6802;
+}
+
+#playgroundTitle {
+	float: left;
+	width: 50%;
+}
+
+#playgroundTitle .padding {
+	padding-left: 20px;
+}
+
+#playgroundTitle .bg {
+	float: left;
+	background: transparent url(http://peacekeeper.futuremark.com/images/titleBg.gif) repeat-x scroll left 11px;
+	padding: 0px 5px;
+}
+
+#playgroundCount {
+	float: left;
+	width: 49%;
+	text-align: right;
+}
+
+#playgroundCount .padding {
+	padding-right: 20px;
+}
+
+#playgroundCount .bg {
+	float: right;
+	background: transparent url(http://peacekeeper.futuremark.com/images/titleBg.gif) repeat-x scroll left 11px;
+	padding: 0px 5px;
+}
+
+#log {
+	display: none;
+	width: 800px;
+	margin: 0px auto;
+}
+
+#runSingleForm {
+	width: 600px;
+	margin: 100px auto;
+}
+
+#background-container {
+  position: absolute;
+}
+
+#background-container div {
+  position: absolute;
+  width: 992px;
+  height: 558px;
+  left: 4px;
+  top: 5px;
+  display: none;
+}
+
+#background-dom {
+  background: url(../images/v2/backgrounds/dom.jpg) no-repeat top left;
+}
+
+#background-array {
+  background: url(../images/v2/backgrounds/array.jpg) no-repeat top left;
+}
+
+#background-string {
+  background: url(../images/v2/backgrounds/string.jpg) no-repeat top left;
+}

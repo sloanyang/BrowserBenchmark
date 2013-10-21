@@ -1,0 +1,3 @@
+var guide={isDoable:true,operations:0,time:0,internalCounter:false,testName:"General Responsiveness",testVersion:"2.0",compareScore:71.7,isConformity:0};var test={init:function(){
+//$.ajax({url:"/ajax/set_test",async:false,type:"POST",data:{test_name:guide.testName,test_version:guide.testVersion}});
+return guide},run:function(b,a){$.ajax({url:"/ajax/responsiveness",dataType:"json"}).done(function(e){var g=mathExtended.median(e);var c={responseTimes:e,responseMedian:g};var f=g;var h=e.length;var d=h/f*1000;c.elapsedTime=f;c.operations=h;c.ops=d;benchmark.submitResult(d,guide,c)})}};

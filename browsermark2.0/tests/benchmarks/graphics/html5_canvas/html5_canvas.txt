@@ -1,0 +1,8 @@
+                        <div id="group_info">
+                            <p>JavaScript tests are non-visual ones, these tests measure most common functions and methods
+                                of JavaScript, as well as their speed. For instance, array handling and string modifications
+                                are measured in this test suite.</p>
+                        </div>
+                        <div id="ajax-loader"><img src="/images/running.gif" alt=""></div>
+
+<div id="next_test" data-next="http://browsermark.rightware.com/tests/benchmarks/javascript/string_chat"></div>

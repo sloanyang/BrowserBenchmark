@@ -1,0 +1,690 @@
+body
+{
+    background: #000 url(images/body-tile.jpg);
+    margin: 0;
+    color: #fff;
+    font: 12px 'Open Sans', 'Helvetica', sans-serif;
+}
+
+body.deleted div#content
+{
+    background: rgba(197, 0, 132, 0.2);
+}
+
+h1, h2, h3, h4, h5, h6, ul
+{
+    margin-top: 24px;
+    font-weight: lighter;
+}
+
+h1
+{
+    font-size: 24px;
+}
+
+h2
+{
+    font-size: 20px;
+}
+
+h3
+{
+    font-size: 16px;
+}
+
+h4
+{
+    font-size: 14px;
+}
+
+a
+{
+    color: #078dda;
+    text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover
+{
+    color: #fff;
+    text-decoration: underline;
+}
+
+a img
+{
+    border-width: 0;
+}
+
+.shock-color
+{
+    color: #00a3ff;
+}
+
+div.performance
+{
+    /*background-color: rgba(0, 163, 255, 0.05);*/
+}
+
+div.conformance
+{
+    /*background-color: rgba(197, 0, 132, 0.05);*/
+}
+
+.inverse-color
+{
+    color: #c50084;
+}
+
+.highlight
+{
+    background-color: rgba(0, 163, 255, 0.2);
+}
+
+span.geomean
+{
+    font-size: x-small;
+    font-weight: lighter;
+}
+div#wrapper
+{
+    background: url(images/background-tile.png) repeat-x fixed;
+}
+
+div#wrapper > div#exposure
+{
+    background: url(images/wrapper-exposure.png) no-repeat fixed center bottom;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper
+{
+    width: 1000px;
+    margin: auto;
+    padding: 0 12px 0 12px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#tests_dropdown
+{
+    height: 24px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#tests_dropdown select
+{
+    display: block;
+    float: right;
+    background-color: #000;
+    border: 1px solid #c8c8c8;
+    border-top-width: 0;
+    height: 24px;
+    font-size: 12px;
+    width: 312px;
+    padding: 3px;
+    color: #fff;
+    outline: none !important;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#header
+{
+    height: 66px;
+    width: 100%;
+    clear: both;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#header > div#logo
+{
+    float: left;
+    clear: left;
+    margin-top: 44px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#header > div#brand
+{
+    float: right;
+    clear: right;
+    margin: 24px 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#header > div#brand > span
+{
+    color: #737373;
+    font-size: 24px;
+    clear: both;
+    display: block;
+    padding: 0;
+    margin: -10px 0 -15px 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content
+{
+    width: 100%;
+    min-height: 500px;
+    clear: both;
+    margin-top: 24px;
+    padding: 24px 0 100px 0;
+    border-top: solid 1px #fff;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > p.browser_info
+{
+    padding: 10px 10px 10px 20px;
+    margin: 20px 0;
+    padding: 20px 0;
+    font-size: 12px;
+    border:    1px dotted #fff;
+    border-width: 1px 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > p#continent a
+{
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 17px;
+    color: #666;
+    text-decoration: none;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > p#continent a.activated
+{
+    color: #00a3ff;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > p#continent a:hover
+{
+    color: #ccc;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div.start_test,
+div#wrapper > div#exposure > div#content-wrapper > div#content a.ready_for_test,
+form input.button
+{
+    float: left;
+    min-width: 200px;
+    text-align: center;
+    margin: 10px 10px 10px 0;
+    padding: 7px 10px 7px 7px;
+    font-size: 14px;
+    cursor: not-allowed;
+    background-color: #666;
+    color: #fff;
+    border-width: 0;
+}
+
+body.front-page div#wrapper > div#exposure > div#content-wrapper > div#content > div.start_test
+{
+    font-size: x-large;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div#group_info
+{
+    width: 980px;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 84px;
+    padding: 10px;
+    position: absolute;
+    top: 135px;
+    z-index: 999;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div#ajax-loader
+{
+    width: 980px;
+    position: absolute;
+    top: 270px;
+    text-align: center;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div#details
+{
+    width: 980px;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 84px;
+    padding: 10px;
+    position: absolute;
+    bottom: 100px;
+    z-index: 999;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div#details p
+{
+    margin: 0;
+    padding: 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div#details p#continue
+{
+    display: block;
+    position: absolute;
+    right: 100px;
+    width: 200px;
+    top: 25px;
+    text-align: center;
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    font-size: 14px;
+    color: #000;
+    background-color: #00a3ff;
+    cursor: pointer;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div#details p#continue:hover
+{
+    background-color: #ccc !important;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div#details p#console_notice
+{
+    position: absolute;
+    width: 860px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    bottom: -16px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content a.ready_for_test
+{
+    float: none;
+    display: inline-block;
+    margin: auto;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div.start_test span,
+div#wrapper > div#exposure > div#content-wrapper > div#content a.ready_for_test,
+form input.button
+{
+    color: #000;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div.start_test:hover,
+div#wrapper > div#exposure > div#content-wrapper > div#content a.ready_for_test:hover,
+form input.button:hover
+{
+    background-color: #00a3ff !important;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content > div.start_test.enabled,
+div#wrapper > div#exposure > div#content-wrapper > div#content a.ready_for_test,
+form input.button
+{
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.overall_score,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.help_us,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_share,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_top3
+{
+    width: 450px;
+    margin: auto;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.help_us
+{
+    margin: 12px auto 12px auto;
+    padding: 12px 0 12px 0;
+    border: 1px dotted #fff;
+    border-width: 1px 0 1px 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_top3 h2
+{
+    border-top: 1px dotted #fff;
+    margin: 10px 0 0 0;
+    padding-top: 10px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_top3 div
+{
+    width: 150px;
+    border: 1px dotted #fff;
+    border-width: 1px 0 1px 0;
+    float: left;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_top3 p
+{
+    width: 140px;
+    border-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_share
+{
+    margin: 12px auto 12px auto;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_share a:hover
+{
+    text-decoration: none;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_share a.url
+{
+    opacity: 0.6;
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    line-height: 25px;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.results_share a.url:hover
+{
+    opacity: 1;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.help_us > p#user_information > input.given_name
+{
+    background-color: #000;
+    border: 1px solid #fff;
+    width: 380px;
+    height: 20px;
+    display: inline-block;
+    float: left;
+    clear: left;
+    color: #fff;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.help_us > p#user_information > input.send_info
+{
+    background-color: #ff6000;
+    border-width: 0;
+    height: 24px;
+    color: #fff;
+    display: inline-block;
+    float: right;
+    clear: right;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.overall_score > p,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results > p,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p
+{
+    margin: 0;
+    padding: 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.overall_score > p.your_score
+{
+    font-size: 10px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.overall_score > p.score
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.benchmark_heading,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results > p.conformity_heading
+{
+    margin: 12px 0 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #fff;
+    border-width: 1px 0 1px 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.group_result
+{
+    font-size: 16px;
+    padding-top: 12px;
+    border-bottom: 1px solid #fff;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.test_result,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results > p.conformity_result
+{
+    font-size: 14px;
+    padding-top: 12px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.group_result > label,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.test_result > label,
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results > p.conformity_result > label
+{
+    display: inline-block;
+    float: left;
+    width: 360px;
+    text-align: left;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.group_result > span
+div#wrapper > div#exposure > div#content-wrapper > div#content div.benchmark_results > p.test_result > span
+div#wrapper > div#exposure > div#content-wrapper > div#content div.conformity_results > p.conformity_result > span
+{
+    display: inline-block;
+    float: left;
+    width: 100px;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.extra-details
+{
+    font-size: 10px;
+    text-align: left;
+    margin: 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.no_meta,
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.show_hide_meta
+{
+    font-size: 10px;
+    color: #666;
+    text-align: left;
+    cursor: pointer;
+    margin: 0;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.no_meta
+{
+    cursor: not-allowed;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.meta_information
+{
+    font-size: 10px;
+    text-align: left;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.meta_information > label
+{
+    display: inline-block;
+    width: 100%;
+}
+
+div#wrapper > div#exposure > div#content-wrapper > div#content div > p.meta_information > span
+{
+    display: inline-block;
+    width: 380px;
+    padding-left: 20px;
+}
+
+div#wrapper > div#exposure div.ad
+{
+    padding-bottom: 9px;
+    background: url(images/main_page_banner_shadow.png) center bottom;
+}
+
+div#wrapper > div#exposure > div#footer-shadow
+{
+    z-index: 900;
+    background: url(images/footer-border-tile.png) repeat-x left top;
+    position: fixed;
+    height: 17px;
+    right: 0;
+    bottom: 42px;
+    left: 0;
+}
+
+div#wrapper > div#exposure > div#footer
+{
+    z-index: 900;
+    background-color: #fff;
+    position: fixed;
+    height: 43px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content
+{
+    width: 1000px;
+    margin: auto;
+    padding-right: 24px;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > ul
+{
+    display: block;
+    list-style-type: none;
+    margin: auto;
+    padding: 0 0 4px 0;
+    height: 34px;
+    color: #000;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > ul > li
+{
+    display: inline-block;
+    float: left;
+    width: 166px;
+    text-align: center;
+    padding-top: 12px;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > ul > li a
+{
+    color: #000;
+    padding: 5px 10px;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > ul > li.current-page-item a
+{
+    background-color: #000;
+    color: #fff;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > p
+{
+    width: 580px;
+    margin: 6px auto;
+    padding: 1px;
+    color: #fff;
+    background-color: #000;
+    overflow: hidden;
+}
+
+div#wrapper > div#exposure > div#footer > div#footer-content > p > span
+{
+    display: inline-block;
+    float: right;
+    width: 480px;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    overflow: hidden;
+    height: 17px;
+    max-height: 17px;
+    white-space: nowrap;
+}
+
+.no-bottom-margin
+{
+    margin-bottom: 0;
+}
+
+.small-desc
+{
+    font-size: 10px;
+    margin-top: 0;
+    color: #666;
+}
+
+.column
+{
+    float: left;
+}
+
+.half
+{
+    width: 49%;
+}
+
+.onethird
+{
+    width: 33%;
+}
+
+.onefourth
+{
+    width: 24%;
+}
+
+.toplist:first-of-type h2
+{
+    padding-left: 70px;
+}
+.toplist p
+{
+    white-space: nowrap;
+    border-top: 1px solid #fff;
+    margin: 0;
+    height: 68px;
+    padding: 12px 0 12px 0;
+}
+
+.toplist:first-of-type p
+{
+    float: left;
+    clear: right;
+    width: 260px;
+}
+
+.toplist:first-of-type p.number
+{
+    font-size: 50px;
+    text-align: center;
+    width: 70px;
+    clear: left;
+}
+
+.toplist:first-of-type p.number, .toplist small
+{
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.toplist p:last-of-type, .toplist p.number-3
+{
+    border-bottom: 1px solid #fff;
+}
+
+.login_form div
+{
+    margin: 0 auto 20px auto;
+    width: 300px;
+    font-size: 14px;
+}
+
+.login_form div input
+{
+    height: 36px;
+    font-size: 24px;
+}
+
+.fb-share-button
+{
+    top: -5px;
+    margin-right: 20px;
+}

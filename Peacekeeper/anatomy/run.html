@@ -1,0 +1,119 @@
+
+
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8">
+  <title>Peacekeeper</title>
+  <meta name="viewport" content="width=1000">
+  <link rel="stylesheet" href="css/benchmark-style.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="css/application-style2.css" media="all" />
+  <script type="text/javascript" src="js/logger.js"></script>
+  <script type="text/javascript" src="js/assetmanager.js"></script>
+  <script type="text/javascript" src="js/libs/jquery-1.6.4.min.js"></script>
+  <script type="text/javascript" src="js/ui.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script>
+  ui.resultActionUrl = "results";
+  function chgTest(suite, test){
+    var url;
+	switch(test){
+		case "webglSphere":
+		case "gamingSpitfire":
+			url = test + ".html";
+			break;
+		default:
+			url = "runTest.html";
+	}
+    url += "?suite=" + suite + "&test=" + test;
+	//$("#testFrame")[0].location.replace(url);
+	$("#testFrame").attr("src", url);
+  }
+  //$(function(){	    
+    // top.alert($.urlParam("test"));
+	//$("#testFrame").attr("src", "runTest.html?test=" + $.urlParam("test"));
+  //});
+  </script>
+  <style type="text/css">
+	#wrapper a{
+		cursor:pointer;
+		line-height:20px;
+	}
+</style>
+</head>
+<body>
+
+  <div id="wrapper">
+    <div id="tests" style="position:absolute;left:5px;top:25px;color:blue;font-size:14px;width:50px">
+	<div><a onclick="chgTest('render', 'renderGrid01')">renderGrid01</a></div>
+	<div><a onclick="chgTest('render', 'renderGrid02')">renderGrid02</a></div>
+	<div><a onclick="chgTest('render', 'renderGrid03')">renderGrid03</a></div>
+	<div><a onclick="chgTest('render', 'renderGrid')">renderGrid</a></div>
+	<div><a onclick="chgTest('render', 'renderPhysics')">renderPhysics</a></div>
+	<div><a onclick="chgTest('html5', 'webglSphere')">webglSphere</a></div>
+	<div><a onclick="chgTest('html5', 'gamingSpitfire')">gamingSpitfire</a></div>
+	<div><a onclick="chgTest('html5', 'videoCodecH264')">videoCodecH264</a></div>
+	<div><a onclick="chgTest('html5', 'videoCodecTheora')">videoCodecTheora</a></div>
+	<div><a onclick="chgTest('html5', 'videoCodecWebM')">videoCodecWebM</a></div>
+	<div><a onclick="chgTest('html5', 'videoPosterSupport')">videoPosterSupport</a></div>
+	<div><a onclick="chgTest('html5', 'workerContrast01')">workerContrast01</a></div>
+	<div><a onclick="chgTest('html5', 'workerContrast02')">workerContrast02</a></div>
+	<div><a onclick="chgTest('experimental', 'experimentalRipple01')">experimentalRipple01</a></div>
+	<div><a onclick="chgTest('experimental', 'experimentalRipple02')">experimentalRipple02</a></div>
+	<div><a onclick="chgTest('array', 'arrayCombined')">arrayCombined</a></div>
+	<div><a onclick="chgTest('array', 'arrayWeighted')">arrayWeighted</a></div>
+	<div><a onclick="chgTest('dom', 'domGetElements')">domGetElements</a></div>
+	<div><a onclick="chgTest('dom', 'domDynamicCreationCreateElement')">domDynamicCreationCreateElement</a></div>
+	<div><a onclick="chgTest('dom', 'domDynamicCreationInnerHTML')">domDynamicCreationInnerHTML</a></div>
+	<div><a onclick="chgTest('dom', 'domJQueryAttributeFilters')">domJQueryAttributeFilters</a></div>
+	<div><a onclick="chgTest('dom', 'domJQueryBasicFilters')">domJQueryBasicFilters</a></div>
+	<div><a onclick="chgTest('dom', 'domJQueryBasics')">domJQueryBasics</a></div>
+	<div><a onclick="chgTest('dom', 'domJQueryContentFilters')">domJQueryContentFilters</a></div>
+	<div><a onclick="chgTest('dom', 'domJQueryHierarchy')">domJQueryHierarchy</a></div>
+	<div><a onclick="chgTest('dom', 'domQueryselector')">domQueryselector</a></div>
+	<div><a onclick="chgTest('string', 'stringChat')">stringChat</a></div>
+	<div><a onclick="chgTest('string', 'stringDetectBrowser')">stringDetectBrowser</a></div>
+	<div><a onclick="chgTest('string', 'stringFilter')">stringFilter</a></div>
+	<div><a onclick="chgTest('string', 'stringValidateForm')">stringValidateForm</a></div>
+	<div><a onclick="chgTest('string', 'stringWeighted')">stringWeighted</a></div>
+	</div>
+    <div id="run-header">
+      <div id="logo-area">
+        <h1><img src="images/v2/pk-logo-small.png" /></h1>
+   			<div id="progressBarContainer">
+     			<div id="progressBarLabel"><p>Running...</p></div>
+     			<div id="progressBarAnchor">
+       			<div id="progressBar"></div>
+       			<div id="progressBarBackground"></div>
+     			</div>
+          <div id="progressRemaining"><p>5 min left</p> </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="playgroundContainer">
+      
+      <div id="background-container">
+        <div id="background-string"></div>
+        <div id="background-array"></div>
+        <div id="background-dom"></div>
+      </div>	
+      
+      
+      
+        <iframe id="testFrame" width="992" height="558" frameborder="no" scrolling="no" src=""></iframe>
+      
+      
+    </div>	
+
+    <div id="test-description">
+      description
+    </div>
+
+    <div id="log">
+      Loading Peacekeeper...
+    </div>
+
+  </div>
+
+</body>
+</html>

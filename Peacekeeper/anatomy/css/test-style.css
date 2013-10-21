@@ -1,0 +1,636 @@
+/* @override http://localhost:8080/peacekeeper/css/test-style.css */
+
+/**
+ * Styles for benchmark tests.
+ */
+
+#test-not-supported {
+  width: 992px;
+  height: 558px;
+  line-height: 558px;
+  background: black;
+  color: #AFAFAF;
+  font-size: 26px;
+  text-align: center;
+}
+
+/* Commons */
+
+body {
+ 	margin: 0px;
+ 	font-family: Arial, Verdana, Tahoma;
+ 	font-size: 12px;	
+}
+
+#playground {
+  	height:558px;
+    width:992px;
+    color: #000000;
+}
+
+#hiddenPlayground {
+	display: none;
+}
+
+.background-array {
+  background: url(../images/v2/backgrounds/array.jpg) no-repeat top left;
+}
+
+.background-string {
+  background: url(../images/v2/backgrounds/string.jpg) no-repeat top left;
+}
+
+.background-dom {
+  background: url(../images/v2/backgrounds/dom.jpg) no-repeat top left;
+}
+
+
+/* Chart */
+
+#renderChart_area {
+	margin: 0px 20px 20px 20px;
+	border-left: 1px solid #8f8f8f;
+	border-bottom: 1px solid #8f8f8f;
+	width: 810px;
+	height: 430px;
+	position: absolute;
+}
+
+#renderChart_title {
+	height: 50px;
+}
+
+#renderChart_titleContent {
+	line-height: 50px;
+	padding-left: 20px;
+	font-size: 20px;
+	color: #4a535d;
+	position: absolute;
+	opacity: 0.2;
+}
+
+.bar {
+	width: 10px;
+	height: 430px;
+	float: left;
+}
+
+.barUpper {
+	width: 8px;
+	height: 100px;
+}
+
+.barLower {
+	width: 8px;
+	height: 330px;
+	background: url(http://peacekeeper.futuremark.com/images/tests/chartBg.gif) #ff7a00 repeat-x bottom left;
+}
+
+#maxBoxAnchor {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#maxBox {
+	position: absolute;
+	line-height: 76px;
+	width: 210px;
+	text-align: center;
+	background: url(http://peacekeeper.futuremark.com/images/tests/chartLabel.png) no-repeat;
+	color: #727272;
+}
+
+/* Video */
+
+.videoSupport-support {
+	text-align: center;
+	font-size: 16px;
+	color: white;
+	padding: 40px 0 0 0;
+}
+
+
+#videoplayer-container {
+  padding: 76px 0 0 0;
+}
+
+#videoplayer {
+  margin: 0 auto 0;
+  display: block;
+}
+
+.videoSupport-not-supported {
+  color: #AFAFAF;
+  font-size: 26px;
+  height: 558px;
+  line-height: 558px;
+  text-align: center;
+  width: 100%;
+}
+
+.videoplayer-loading-label {
+  color: #B4B4B4;
+  padding: 12px;
+  text-align: center;
+}
+    
+/*
+.videoSupport-support dd {
+	float: left;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.videoSupport-support dt {
+	float: left;
+	padding: 0 10px 0 5px;
+	margin: 0;
+}
+
+.videoSupport-support .yes {
+	color: #49B600;
+}
+
+.videoSupport-support .no {
+	color: #B52400;
+}
+*/
+
+/* Zoom */
+
+#zoom_overview {
+	float: left;
+	width: 550px;
+	height: 500px;
+}
+
+#zoom_overviewAnchor {
+	width: 550px;
+	height: 500px;
+	position: absolute;
+}
+
+#zoom_box {
+	position: absolute;
+	border: 2px solid #ffffff;
+	opacity: 0.5;
+	width: 100px;
+	height: 160px;
+}
+
+#zoom_detail {
+	float: left;
+	width: 300px;
+	height: 500px;
+}
+
+#zoom_detailAnchor {
+	width: 300px;
+	height: 500px;
+	position: absolute;
+	overflow: hidden;
+}
+
+#zoom_detailImage {
+	position: absolute;
+}
+
+.photoZoom_container  {
+	width: 850px;
+	height: 500px;
+	background: #000000;
+	position: absolute;
+	overflow: hidden;
+}
+
+.photoZoom_container img {
+	position: absolute;
+}
+
+
+/* Map */
+
+.alpha_container  {
+	width: 850px;
+	height: 500px;
+	background: #000000;
+	position: absolute;
+	overflow: hidden;
+}
+
+.alpha_container img {
+	position: absolute;
+}
+
+/* Map */
+
+#map_base {
+	position: absolute;
+	width: 850px;
+	height: 500px;
+	overflow: hidden;
+}
+
+#map_overview, #map_detailed {
+	position: absolute;	
+}
+
+#map_infoTitle {
+	opacity: 0.9;
+	position: absolute;
+	width: 200px;
+	top: 20px;
+	left: -210px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 2px solid #afafaf;
+	background: #717171;
+	font-weight: bold;
+	font-family: 12px;
+	color: #ffffff;
+	
+}
+
+.map_infoElement {
+	position: absolute;
+	width: 200px;
+	top: 75px;
+	left: -210px;
+	line-height: 25px;
+	border-top: 1px solid #9d9d9d;
+	background: #ffffff;
+	opacity: 0.9;
+}
+
+.map_infoElement a {
+	text-decoration: none;
+	color: #3b5f96;
+}
+
+.map_infoLoader {
+	text-align: center;
+	line-height: 20px;
+	color: #979797;
+}
+
+/* Worker */
+
+.worker-title {
+    background:none repeat scroll 0 0 transparent;
+    color: white;
+    font-size:20px;
+    font-weight:normal;
+    margin:0;
+    padding: 45px 0;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+.worker-comparison {
+  float: left;
+  height:178px;
+  margin: 3px;
+  width: 490px;
+  background: black url(../images/preloader3.gif) no-repeat 330px center;
+}
+
+.worker-comparison img,
+.worker-comparison canvas
+{
+	width: 235px;
+	height: 147px;
+}
+
+.worker-comparison .worker-comparison-original
+{
+	margin: 6px 3px 6px 6px;
+}
+
+.worker-comparison .worker-comparison-edited
+{
+	margin: 6px 6px 6px 3px;
+}
+
+/* Spitfire */
+
+#spitfire-statistics-anchor {
+	position: absolute;
+}
+
+#spitfire-statistics {
+	background: rgba(0,0,0,0.5);
+	color: white;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  z-index: 10000;
+  padding: 5px 20px;
+  width: 600px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* Physics */
+
+#renderPhysics_box {
+	position: absolute;
+	width: 850px;
+	height: 500px;
+} 
+
+.renderPhysics_bg {
+  margin: 80px 10px 0;
+  position: absolute;
+}
+
+/* Grid */
+
+.renderGrid_pixel {
+	float: left;
+}
+
+#gridPadding {
+}
+
+
+/* Community real life test. */
+
+#commynity_bg {
+	background: #f1f1f1;
+	width: 850px;
+	height: 500px;
+}
+
+#community_top {
+	width: 850px;
+	height: 66px;
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/top.gif) no-repeat top left;
+}
+
+#community_contentWrapper {
+	width: 820px;
+	margin: 0px auto;
+	display: none;
+}
+
+#community_leftColumn {
+	float: left;
+	width: 250px;
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/leftBg.gif) repeat-y top left;
+}
+
+#community_leftColumn .header {
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/leftHeader.gif) no-repeat top left;
+}
+
+#community_leftColumn .footer{
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/leftFooter.gif) no-repeat bottom left;
+	height: 420px;
+}
+
+#community_leftColumn .padding {
+	padding: 10px;
+}
+
+#community_leftColumn .title {
+	font-weight: bold;
+}
+
+#community_leftColumn .appLink {
+	float: left;
+	width: 100px;
+	line-height: 20px;
+}
+
+#community_leftColumn .appLinkIcon {
+	padding-left: 10px;
+}
+
+#community_rightColumn {
+	float: left;
+	width: 570px;
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/rightBg.gif) repeat-y top left;
+}
+
+#community_rightColumn .header {
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/rightHeader.gif) no-repeat top left;
+}
+
+#community_rightColumn .footer{
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/rightFooter.gif) no-repeat bottom left;
+	height: 420px;
+}
+
+#community_loginWrapper {
+	width: 820px;
+	height: 424px;
+	margin: 0px auto;
+	display: none;
+	background: url(http://peacekeeper.futuremark.com/images/tests/community/loginBg.gif) no-repeat bottom left;
+}
+
+#community_loginLeft {
+	float: left;
+	width: 464px;
+}
+
+#community_loginLeft .padding {
+	padding: 109px 0px 0px 102px;
+}
+
+#community_loginRight {
+	float: left;
+	width: 356px;
+}
+
+#community_loginLeft h1 {
+	font-family: tahoma, verdana, arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #686868;
+	padding-top: 15px;
+}
+
+#community_loginLeft .loginLabel {
+	width: 80px;
+	float: left;
+	clear: both;
+	font-weight: bold;
+	color: #656565;
+	padding-bottom: 5px;
+	line-height: 20px
+}
+
+#community_loginLeft .loginInput {
+	width: 178px;
+	float: left;
+	padding-bottom: 5px;
+}
+
+#community_loginLeft .loginInput input {
+	width: 100%;
+}
+
+#loginButton {
+	background: #76a52f;
+	color: #ffffff;
+	font-weight: bold;
+	border: 0px;
+	font-size: 10px;
+	padding: 2px 0px;
+}
+
+#community_loginRight h1 {
+	font-family: "Trebuchet MS", verdana, arial;
+	font-size: 18px;
+	font-weight: bold;
+	color: #686868;
+	padding-top: 40px;
+}
+
+#community_loginRight p {
+	padding: 10px 20px 5px 0px;
+}
+
+#community_loginRight ul {
+	list-style-image: url(http://peacekeeper.futuremark.com/images/tests/community/bullet.gif);
+}
+
+#community_loginRight li {
+	line-height: 20px;
+}
+
+
+#community_rightColumn .padding {
+	padding: 10px;
+}
+
+#community_rightColumn .title {
+	font-family: "Trebuchet MS", verdana, arial;
+	float: left;
+	width: 100px;
+	font-size: 14px;
+	line-height: 20px;
+	height: 25px;
+}
+
+#community_rightColumn .sort {
+	float: left;
+	width: 447px;
+	color: #696969;
+	font-size: 10px;
+	line-height: 20px;
+	text-align: right;
+}
+
+#community_rightColumn .filter {
+	clear: both;
+	border: 1px solid #e1e1e1;
+	padding: 4px 8px;
+	margin-bottom: 10px;
+}
+
+#community_rightColumn .filterTitle {
+	float: left;
+	width: 47px;
+	line-height: 22px;
+}
+
+#community_rightColumn .filterInput {
+	float: left;
+	width: 482px;
+}
+
+#community_rightColumn .filterInput input {
+	width: 100%;
+	border: 1px solid #e1e1e1;
+}
+
+#community_rightColumn .friendList {
+	clear: both;
+	border: 1px solid #e1e1e1;
+	font-size: 11px;
+	width: 548px;
+	height: 330px;
+}
+
+#community_rightColumn .friendList .padding{
+	padding: 0px 0px;
+	width: 528px;
+	height: 310px;
+	margin: 10px auto;
+	overflow: auto;
+}
+
+#community_rightColumn .friendList .image {
+	clear: both;	
+	float: left;
+	width: 25px;
+	height: 25px;
+	line-height: 20px;
+}
+
+#community_rightColumn .friendList .subject a {
+	text-decoration: none;
+	color: #5f76c8;
+}
+
+#community_rightColumn .friendList .subject {
+	float: left;
+	width: 300px;
+	line-height: 20px;
+}
+
+#community_rightColumn .friendList .name {
+	float: left;
+	width: 100px;
+	line-height: 20px;
+}
+
+#community_rightColumn .friendList .date {
+	float: left;
+	width: 100px;
+	text-align: right;
+	line-height: 20px;
+}
+
+
+
+/* ripple */
+
+#anchor {
+	width: 800px;
+	height: 550px;
+	position: absolute;
+}
+
+#anchor canvas {
+	position: absolute;
+}
+
+/*
+#anchor div#fps {
+	position: absolute;
+	top: 30px;
+	left: 40px;
+	font-size: 10px;
+	font-weight: bold;
+	font-family: arial;	
+	color: #000000;
+}
+*/
+
+#anchor div#fpsBig, #anchor div#fps {
+	position: absolute;
+	top: 440px;
+	left: 0px;
+	width: 850px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: arial;	
+	color: #757b7f;
+}
+

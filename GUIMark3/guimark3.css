@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html, body {
+	width: 480px;
+	height: 640px;
+}
+body {
+	margin :0px;
+	padding: 0px;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#headerbar {
+	font-size: 18px;
+	width: 480px;
+	height: 40px;
+	background-color: #333333;
+	position: absolute;
+}
+#testlabel {
+	color: #CCCCCC;
+	position: absolute;
+	width: 370px;
+	left: 10px;
+	top: 10px;
+}
+#testaction {
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	width: 100px;
+	right: 0px;
+	top: 10px;
+	text-decoration: none;
+	cursor: pointer;
+}

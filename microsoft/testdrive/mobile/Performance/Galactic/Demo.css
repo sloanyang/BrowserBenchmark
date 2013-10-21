@@ -1,0 +1,90 @@
+﻿#DemoScreenreaderText
+{
+    position: absolute;
+    left: -10000px;
+}
+
+#DemoReturnButton
+{
+    position: absolute;
+    display: block;
+    top: 0px;
+    right: 40px;
+    width: 208px;
+    height: 27px;
+    background-image: url("../../Includes/Image/ReturnButton.png");
+    text-indent: -10000px;
+    z-index: 1000;
+}
+
+#DemoReturnButton:hover
+{
+    background-image: url('../../Includes/Image/ReturnButtonHover.png');
+}
+
+DIV#Options 
+{
+    position: absolute;
+    display: block;
+    top: 35px;
+    right: 27px;
+    width: 208px; 
+    z-index: 1000;
+    font-size: 8.5pt;  
+    margin:0px;
+    padding:0px; 
+    line-height:20px;
+         
+}
+
+DIV#Options > A, A:Visited 
+{
+    color: #00a3ef;
+    text-decoration: none;
+    font-family: 'Segoe UI' , Verdana, Helvetica, Sans-Serif;    
+}
+
+DIV#Options > A:Hover
+{
+    color:White;
+}
+    
+#miniview 
+{
+    position:absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 2px solid white; 
+    border-radius:25px;   
+    background-color:Black;
+    z-index:5;    
+}
+
+#mainview 
+{
+    position:absolute;
+    top: 50px;
+    left: 0px;
+    z-index:0;    
+}
+
+#view2d 
+{
+    position:absolute;
+    top: 50px;
+    left: 0px;
+    z-index:10;    
+}
+
+Body
+{
+    /*background-image: url(textures/skyA.jpg)*/
+    margin: 0px;
+    overflow: hidden;
+    background-color:Black;            
+}
+
+.Hidden 
+{
+    display:none;
+}

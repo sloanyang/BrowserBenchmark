@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* CSS Document */
+html, body {
+	/*width: 640px;
+	height: 400px;*/
+	margin: 0px;
+	padding: 0px;
+}
+.videoContainer {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}

@@ -1,0 +1,7 @@
+database.url=jdbc:mysql://10.176.21.48/peacekeeper2
+facebook.appid=250615361649960
+facebook.appsecret=442fa87bd0b364c3eacb283e6fea6a8e
+rewriteenabled=true
+
+
+
