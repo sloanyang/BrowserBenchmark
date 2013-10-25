@@ -1,0 +1,3 @@
+[submodule "Scrapy-BrowserBenchmark"]
+	path = Scrapy-BrowserBenchmark
+	url = https://github.com/sloanyang/Scrapy-BrowserBenchmark.git
